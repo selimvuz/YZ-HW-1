@@ -1,6 +1,5 @@
 import queue
 
-
 def a_star(start, goal, graph, h):
     open_set = queue.PriorityQueue()
     open_set.put((h[start], start))
@@ -23,7 +22,6 @@ def a_star(start, goal, graph, h):
 
     return None
 
-
 def best_first(start, goal, graph, h):
     open_set = queue.PriorityQueue()
     open_set.put((h[start], start))
@@ -41,7 +39,6 @@ def best_first(start, goal, graph, h):
 
     return None
 
-
 def reconstruct_path(came_from, current):
     path = []
     while current is not None:
@@ -55,7 +52,7 @@ def reconstruct_path(came_from, current):
 graph = {
     'Tamil Nadu': {'Maharashtra': 1222, 'Chhattisgarh': 1500, 'Odisha': 1500},
     'Maharashtra': {'Tamil Nadu': 1222, 'Gujarat': 790, 'Madhya': 747, 'Chhattisgarh': 730},
-    'Madhya': {'Gujarat': 886, 'Chhattisgarh': 500, 'Rajasthan': 827, 'Bihar': 1441},
+    'Madhya': {'Gujarat': 886, 'Chhattisgarh': 500, 'Rajasthan': 827, 'Bihar': 929},
     'Chhattisgarh': {'Tamil Nadu': 1500, 'Maharashtra': 730, 'Madhya': 500, 'Bihar': 822, 'Odisha': 411},
     'Odisha': {'Tamil Nadu': 1500, 'Bihar': 878, 'Chhattisgarh': 411},
     'Gujarat': {'Maharashtra': 790, 'Madhya': 886, 'Rajasthan': 652},
@@ -65,28 +62,28 @@ graph = {
     'Nagaland': {'Bihar': 1327}
 }
 
-# h, her şehir için kuş uçuşu mesafelerini içeren sözlüktür.
+# Her şehir için kuş uçuşu mesafelerini içeren sözlük
 h = {
-    'Tamil Nadu': 0,
-    'Maharashtra': 1008,
-    'Madhya': 1320,
-    'Gujarat': 1490,
-    'Rajasthan': 1830,
-    'Ladakh': 2570,
-    'Bihar': 1790,
-    'Odisha': 1175,
-    'Chhattisgarh': 1180,
-    'Nagaland': 2360
+    'Tamil Nadu': 1175,
+    'Maharashtra': 900,
+    'Madhya': 650,
+    'Gujarat': 1340,
+    'Rajasthan': 1270,
+    'Ladakh': 1700,
+    'Bihar': 645,
+    'Odisha': 0,
+    'Chhattisgarh': 270,
+    'Nagaland': 1240
 }
 
-# Başlangıç ve bitiş noktalarınız:
+# Başlangıç ve bitiş noktalarımız:
 start = 'Rajasthan'
 goal = 'Odisha'
 
-# A* Algoritmasını kullanarak yolu bulun
+# A* algoritmasının sonucu
 path = a_star(start, goal, graph, h)
 print("A* ile bulunan yol:", path)
 
-# Best First Algoritmasını kullanarak yolu bulun
+# Best First algoritmasının sonucu
 path = best_first(start, goal, graph, h)
-print("Best First ile bulunan yol:", path)
+print("BFS ile bulunan yol:", path)
